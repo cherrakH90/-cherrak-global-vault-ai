@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cherrak Global Vault AI</title>
+<style>
+  body {
+    background: radial-gradient(circle at top, #021018, #000);
+    color: #c9f1ff;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+  }
+  header {
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 24px;
+    color: #00e0ff;
+    letter-spacing: 1px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 20px;
+  }
+  .card {
+    background: rgba(5, 20, 30, 0.9);
+    border: 1px solid #003d57;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+  }
+  .title {
+    font-size: 18px;
+    color: #00d4ff;
+    margin-bottom: 8px;
+  }
+  .desc {
+    font-size: 13px;
+    color: #9ad8ff;
+    margin-bottom: 12px;
+  }
+  button {
+    background: #00bfff;
+    border: none;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  button:hover {
+    background: #0099cc;
+  }
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+  <header>
+    🚪🔐 Cherrak Global Vault AI  
+    <div style="font-size:14px;color:#9ad8ff;">الخزنة العالمية الذكية لكل أصولك المالية</div>
+  </header>
+
+  <div id="appGrid" class="grid"></div>
+
+  <script>
+    const apps = Array.from({length: 50}, (_, i) => ({
+      id: i + 1,
+      name: `تطبيق رقم ${i + 1}`,
+      desc: "وصف مختصر لتطبيق الذكاء الاصطناعي رقم " + (i + 1)
+    }));
+
+    const grid = document.getElementById('appGrid');
+    apps.forEach(a => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="title">${a.name}</div>
+        <div class="desc">${a.desc}</div>
+        <button onclick="openApp(${a.id})">فتح التطبيق</button>
+      `;
+      grid.appendChild(card);
+    });
+
+    function openApp(id) {
+      alert('🚀 فتح التطبيق رقم ' + id);
+    }
+  </script>
+
+  <footer>© 2025 Cherrak Houari | Cherrak Global Vault AI</footer>
+</body>
+</html>
