@@ -1,0 +1,5 @@
+[
+  {"id":1,"name":"Cherrak GPT AI","desc":"ذكاء اصطناعي للتفاعل والتحليل","icon":"icons/ai.png"},
+  {"id":2,"name":"Cherrak Pay","desc":"نظام دفع إلكتروني ذكي","icon":"icons/pay.png"},
+  {"id":3,"name":"Cherrak Carte AI","desc":"بطاقة ذكية تعمل بالذكاء الاصطناعي","icon":"icons/card.png"}
+]
