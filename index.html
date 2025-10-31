@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cherrak Global Vault AI - التطبيقات</title>
+<style>
+  body{background:#020b14;color:#e8f8ff;font-family:Tahoma, Arial;margin:0;padding:0}
+  header{padding:18px;text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;padding:12px}
+  .card{background:#07111a;border-radius:10px;padding:12px;box-shadow:0 4px 10px rgba(0,0,0,.5);}
+  .card img{width:48px;height:48px;border-radius:8px}
+  .title{font-weight:bold;color:#00e0ff}
+  .desc{color:#9ad8ff;font-size:13px;margin-top:6px}
+  button{background:#00bfff;border:none;color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer}
+</style>
+</head>
+<body>
+<header><h2>Cherrak Global Vault AI — التطبيقات (1 → 50)</h2></header>
+<div id="appGrid" class="grid"></div>
+
+<script>
+async function loadApps() {
+  try {
+    const resp = await fetch('apps.json');
+    if(!resp.ok) throw new Error('فشل تحميل apps.json');
+    const data = await resp.json();
+    const map = new Map(data.map(a => [Number(a.id), a]));
+    const grid = document.getElementById('appGrid');
+    grid.innerHTML = '';
+    for(let i=1;i<=50;i++){
+      let a = map.get(i);
+      if(!a){
+        a = {id:i, name:`Cherrak App ${i}`, desc:'(مفقود - placeholder)', icon:'icons/placeholder.png'};
+      }
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div style="display:flex;gap:10px;align-items:center">
+          <img src="${a.icon}" onerror="this.src='icons/placeholder.png'">
+          <div style="flex:1">
+            <div class="title">${a.name}</div>
+            <div class="desc">${a.desc}</div>
+          </div>
+          <div>
+            <button onclick="openApp(${a.id})">فتح</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+  } catch(err) {
+    console.error(err);
+    document.getElementById('appGrid').innerHTML = '<p style="color:#f88">⚠️ خطأ في تحميل التطبيقات. تأكد من وجود ملف apps.json</p>';
+  }
+}
+
+function openApp(id){
+  alert('📱 فتح التطبيق رقم: ' + id);
+}
+
+loadApps();
+</script>
+</body>
+</html>
